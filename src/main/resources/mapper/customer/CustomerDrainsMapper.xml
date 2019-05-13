@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tk.mybatis.springboot.modules.customer.mapper.CustomerDrainsMapper">
+    <!--从customer_drains表中获取数据-->
+    <select id="findAll" parameterType="customerDrains" resultType="customerDrains">
+        SELECT d.*,c.name as customerName
+        from customer_drains d JOIN customer c on d.customer_id=c.id
+        where 1=1
+        <if test="id!='' and id!=null">
+            and d.id=#{id}
+        </if>
+        <if test="status!='' and status!=null">
+            and c.status=#{status}
+        </if>
+        <if test="delay!='' and delay!=null">
+            and d.delay=#{delay}
+        </if>
+        <if test="reason!='' and reason!=null">
+            and c.reason=#{reason}
+        </if>
+        <if test="drainDate!='' and drainDate!=null">
+            and d.drain_date=#{drainDate}
+        </if>
+        <if test="customerId!='' and customerId!=null">
+            and d.customer_id=#{customerId}
+        </if>
+        <if test="lastOrderDate!='' and lastOrderDate!=null">
+            and d.last_order_date=#{lastOrderDate}
+        </if>
+
+    </select>
+
+    <select id="findById" parameterType="string" resultType="CustomerDrains">
+        SELECT d.*, c.name as customerName
+        from customer_drains d
+                 JOIN customer c on d.customer_id = c.id
+        where d.id = #{id}
+    </select>
+</mapper>

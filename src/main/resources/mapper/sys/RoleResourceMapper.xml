@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tk.mybatis.springboot.modules.sys.mapper.RoleResourceMapper">
+    <delete id="remove" parameterType="string">
+        DELETE
+        from role_resource
+        where role_id = #{roleId}
+    </delete>
+
+    <select id="batchSelect" parameterType="java.util.List" resultType="string">
+        SELECT DISTINCT resource_id
+        from role_resource
+        where role_id IN
+        <foreach item="roleId" collection="list" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+
+    <select id="getMenusNotButtonByRoleIds" parameterType="java.util.List"
+            resultType="tk.mybatis.springboot.modules.sys.model.Resource">
+        SELECT
+        r.id,
+        r.name,
+        r.url,
+        r.open_mode as openMode,
+        r.description,
+        r.icon,
+        r.pid,
+        r.seq,
+        r.status,
+        r.opened,
+        r.resource_type as resourceType,
+        r.create_time as createTime
+        FROM resource r
+        LEFT JOIN role_resource rr
+        on r.id=rr.resource_id
+        WHERE 1=1
+        AND r.resource_type=0
+        AND role_id IN
+        <foreach item="roleId" collection="list" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+</mapper>

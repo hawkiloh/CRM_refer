@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tk.mybatis.springboot.modules.sys.mapper.UserMapper">
+    <select id="findSalesAll" resultType="map">
+        select u.id, u.login_name as text
+        from user u
+                 join organization o
+                      on u.organization_id = u.organization_id
+        where o.`name` = '销售部'
+    </select>
+
+    <select id="findAllManager" resultType="map">
+        SELECT u.id, u.login_name as text
+        FROM `user` u
+                 JOIN user_role ur
+                      ON u.id = ur.user_id
+                 JOIN role r
+                      ON r.id = ur.role_id
+        WHERE r.`name` = 'customer'
+    </select>
+</mapper>

@@ -1,0 +1,310 @@
+@CHARSET "UTF-8";
+
+.map_tip {
+    z-index: 999;
+    position: absolute;
+    left: 45%;
+    top: 2px;
+}
+
+.map_tip_loading {
+    background: none repeat scroll 0 0 #000;
+    color: #fff;
+    height: 30px;
+    line-height: 28px;
+    margin: auto;
+    opacity: 0.7;
+    padding: 7px 0;
+    position: relative;
+    text-align: center;
+    width: 185px;
+    height: 40px;
+}
+
+.loading_pic {
+    background: url(../images/ajax-loader.gif) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 16px;
+}
+
+.tt {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+}
+
+.tt1 {
+    height: 250px;
+    width: 283px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-color: #ddd;
+    border-radius: 4px;
+    background: none repeat scroll 0 0 #fff;
+    opacity: 0.85;
+    overflow: auto;
+    margin-bottom: 2px;
+}
+
+.tt2 {
+    position: absolute;
+    top: 6px;
+    right: 285px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-color: #ddd;
+    border-radius: 4px;
+    background: none repeat scroll 0 0 #fff;
+    opacity: 0.85;
+    overflow: auto;
+    margin-bottom: 2px;
+}
+
+.panel-header {
+    padding: 7px 15px;
+}
+
+.control-wrap {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    bottom: auto;
+    left: auto;
+    position: absolute;
+    right: 125px;
+    top: 6px;
+    z-index: 1001;
+}
+
+.control-wrap .right {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #c4c7cc;
+    float: left;
+}
+
+.control-wrap .right span {
+    background-image: url("/lib/images/gis/tools_47a3ea9.png");
+    background-repeat: no-repeat;
+    border-right: 1px solid #ecedef;
+    float: left;
+    height: 26px;
+    width: 26px;
+}
+
+.control-wrap .right span:hover {
+    background-color: #3385ff;
+}
+
+.control-wrap .right span p {
+    cursor: pointer;
+    height: 26px;
+}
+
+.control-wrap .last {
+    border: 0 none !important;
+}
+
+.control-wrap .search {
+    background-position: -49px -332px;
+}
+
+.control-wrap .search:hover {
+    background-position: -49px -301px;
+}
+
+/* 框选:背景样式暂且自定义，后期再改*/
+.control-wrap .rectangle {
+    background-position: -43px -118px;
+    text-align: center
+}
+
+.control-wrap .rectangle:hover {
+    background-position: -43px -118px;
+    background: #3385ff;
+}
+
+.control-wrap .layer {
+    background-position: -75px -332px;
+}
+
+.control-wrap .layer:hover {
+    background-position: -75px -301px;
+}
+
+.control-wrap .measure {
+    background-position: -134px -332px;
+}
+
+.control-wrap .measure:hover {
+    background-position: -134px -301px;
+}
+
+.control-wrap .marks {
+    background-position: -160px -332px;
+}
+
+.control-wrap .marks:hover {
+    background-position: -160px -301px;
+}
+
+.control-wrap .locate {
+    background-position: -212px -332px;
+}
+
+.control-wrap .locate:hover {
+    background-position: -212px -301px;
+}
+
+.control-wrap .clearmark {
+    background-position: -238px -332px;
+}
+
+.control-wrap .clearmark:hover {
+    background-position: -238px -301px;
+}
+
+#openInstance {
+    background-image: url("../images/arrow.png");
+    cursor: pointer;
+    height: 58px;
+    right: 0px;
+    position: absolute;
+    top: 40px;
+    width: 21px;
+    z-index: 201;
+}
+
+.openInstance-left {
+    background-position: -44px 0px;
+}
+
+.openInstance-left:hover {
+    background-position: -66px 0px;
+}
+
+.openInstance-right {
+    background-position: 0px 0px;
+}
+
+.openInstance-right:hover {
+    background-position: -22px 0px;
+}
+
+.searchResult {
+    width: 100%;
+    height: 215px;
+    overflow: auto;
+    text-align: left;
+}
+
+.searchResult ul {
+    list-style: none outside;
+    margin: 5px auto 5px 8px;
+    padding-left: 0px;
+}
+
+.searchResult ul li {
+    margin: 5px;
+}
+
+.searchResult ul li a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.searchResult ul li a:hover {
+    color: #ba2636;
+    text-decoration: underline;
+}
+
+.legendDiv {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-family: cursive;
+    z-index: 9999;
+}
+
+.legendcss {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 1px 1px 6px #888888;
+    margin: 2px;
+    padding: 0;
+}
+
+.legendcss tr {
+    padding: 2px 0;
+}
+
+.legendcss tr td ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.legendcss tr td ul li {
+    float: left;
+    padding: 0 2px;
+    line-height: 26px;
+}
+
+.legendcss tr td ul li img {
+    height: 20px;
+    width: 20px;
+}
+
+.legend-change-inner {
+    background-color: #fff;
+    border: 1px solid #c4c7cc;
+    color: #666;
+    display: inline-block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 23px 0 10px;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.legend-change-inner i {
+    bottom: 9px;
+    display: inline-block;
+    height: 6px;
+    position: absolute;
+    right: 10px;
+    transition: all 0.15s ease-in-out 0s;
+    width: 8px;
+}
+
+.legend-change-inner em {
+    border-color: #d0d4da rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-right: 4px solid rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-width: 4px;
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 1px;
+    width: 0;
+}
+
+
+.legend-change-inner:hover {
+    color: #0c88e8;
+    text-decoration: none;
+}
+
+.legend-change-inner:hover em {
+    border-top-color: #0c88e8;
+    text-decoration: none;
+}
+
+.legend-change-click .legend-change-inner i {
+    transform: rotate(180deg);
+}
+
+.anchorBL {
+    display: none
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tk.mybatis.springboot.modules.customer.mapper.CustomerMapper">
+    <select id="findAll" parameterType="customer" resultType="customer">
+        SELECT c.*
+        from customer c
+        where 1=1
+        <if test="id!='' and id!=null">
+            and c.id=#{id}
+        </if>
+        <if test="name!='' and name!=null">
+            and c.name like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="region!='' and region!=null">
+            and c.region=#{region}
+        </if>
+        <if test="managerId!='' and managerId!=null">
+            and c.manager_id=#{managerId}
+        </if>
+        <if test="level!='' and level!=null">
+            and c.level=#{level}
+        </if>
+        <if test="satify!='' and satify!=null">
+            and c.satify=#{satify}
+        </if>
+        <if test="credit!='' and credit!=null">
+            and c.credit=#{credit}
+        </if>
+        <if test="state!='' and state!=null">
+            and c.state=#{state}
+        </if>
+        <if test="tel!='' and tel!=null">
+            and c.tel=#{tel}
+        </if>
+        <if test="fax!='' and fax!=null">
+            and c.fax=#{fax}
+        </if>
+        <if test="email!='' and email!=null">
+            and c.email=#{email}
+        </if>
+        <if test="birthday!='' and birthday!=null">
+            and c.birthday=#{birthday}
+        </if>
+
+    </select>
+
+    <select id="findAllByBirthday" parameterType="customer" resultType="customer">
+        SELECT c.*
+        from customer c
+        where 1=1
+        <if test="id!='' and id!=null">
+            and c.id=#{id}
+        </if>
+        <if test="name!='' and name!=null">
+            and c.name like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="region!='' and region!=null">
+            and c.region=#{region}
+        </if>
+        <if test="managerId!='' and managerId!=null">
+            and c.manager_id=#{managerId}
+        </if>
+        <if test="level!='' and level!=null">
+            and c.level=#{level}
+        </if>
+        <if test="satify!='' and satify!=null">
+            and c.satify=#{satify}
+        </if>
+        <if test="credit!='' and credit!=null">
+            and c.credit=#{credit}
+        </if>
+        <if test="state!='' and state!=null">
+            and c.state=#{state}
+        </if>
+        <if test="tel!='' and tel!=null">
+            and c.tel=#{tel}
+        </if>
+        <if test="fax!='' and fax!=null">
+            and c.fax=#{fax}
+        </if>
+        <if test="email!='' and email!=null">
+            and c.email=#{email}
+        </if>
+
+        <![CDATA[   and DATE_FORMAT(birthday , '%m-%d')=  DATE_FORMAT(now(), '%m-%d')   ]]>
+    </select>
+</mapper>

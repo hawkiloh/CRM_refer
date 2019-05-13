@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tk.mybatis.springboot.modules.customer.mapper.ReportMapper">
+    <select id="CountCustomerlevel" resultType="map">
+        SELECT COUNT(*) value, level name
+        FROM customer
+        GROUP BY `level`
+    </select>
+
+    <select id="CountCustomerSatify" resultType="map">
+        SELECT COUNT(*) value, satify name
+        FROM customer
+        GROUP BY `satify`
+    </select>
+
+    <select id="CountCustomerCredit" resultType="map">
+        SELECT COUNT(*) value, credit name
+        FROM customer
+        GROUP BY `credit`
+    </select>
+
+
+</mapper>

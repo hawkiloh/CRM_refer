@@ -86,7 +86,8 @@ public class DevelopService {
         } else {//新增
             develop.setId(UUIDGenerator.getUUID());
             develop.setCreateBy(user.getLoginName());
-            develop.setCreateDate(new Date());
+//            前端编辑日期
+//            develop.setCreateDate(new Date());
             develop.setStatus("未分配");
             i = developMapper.insert(develop);
         }
@@ -118,4 +119,15 @@ public class DevelopService {
     }
 
 
+    /**
+     * 根据创建日期查找订单
+     * @param develop
+     * @return
+     */
+    public PageInfo<Develop> findAllByReview(Develop develop) {
+        PageHelper.startPage(develop.getPage(), develop.getRows());
+        List<Develop> list = developMapper.findAllByReview(develop);
+
+        return new PageInfo<Develop>(list);
+    }
 }

@@ -31,6 +31,8 @@
                     <span class="separator"></span>
                     <a class="mini-button" iconCls="icon-filter" plain="true" onclick="showReview()">今天订单回访</a>
                     <a class="mini-button" iconCls="icon-filter" plain="true" onclick="clearFilter()">清除过滤</a>
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-upgrade" plain="true" onclick="sendEmail()">发送订单回访邮件</a>
                 </td>
                 <td style="white-space:nowrap;">
                     <input id="key" class="mini-textbox" emptyText="请输入客户名称" style="width:150px;" onenter="onKeyEnter"/>
@@ -42,8 +44,10 @@
 </div>
 <div id="datagrid1" class="mini-datagrid" style="width:100%;height:460px;"  allowResize="true" url="/market/findAll"
      idField="id" emptyText="当前数据为空，<a class='op-a' href='javascript:newRow()'>增加一条</a>" showEmptyText="true"
+     allowRowSelect="true" multiSelect="true" allowUnselect="true"
 >
     <div property="columns">
+        <div type="checkcolumn"></div>
         <div type="indexcolumn" field="id" align="center" headerAlign="center">编号</div>
         <div name="custName" field="custName" width="100" align="center"  headerAlign="center">客户名称</div>
         <div field="title" width="160" align="center" headerAlign="center">概要</div>
@@ -80,6 +84,7 @@
     }
     function clearFilter() {
         filter.clearAllFilter();
+        grid.load();
     }
     //过滤处理
     var filter = new HeaderFilter(grid, {
@@ -106,10 +111,10 @@
         mini.open({
             targetWindow: window,
             url: "/market/addUI",
-            title: "新增营销机会",
+            title: "新增订单",
             async: true,
             width: 600,
-            height: 260,
+            height: 400,
             onload: function () {
                 var iframe = this.getIFrameEl();
                 var data = { action: "new" };
@@ -125,7 +130,7 @@
         if(row){
             mini.open({
                 url: "/market/addUI",
-                title: "编辑营销机会", width:600, height: 260,
+                title: "编辑客户订单", width:600, height: 500,
                 onload: function () {
                     var iframe = this.getIFrameEl();
                     var data = { action: "edit", id: row };
@@ -215,5 +220,35 @@
         if (ss < 10) clock += '0';
         clock += ss;
         return(clock);
+    }
+
+    //显示回访订单
+    function showReview(){
+        grid.load({
+            showReview:true
+        });
+    }
+
+    function sendEmail() {
+        let rows=grid.getSelecteds();
+        if(rows){
+            $.ajax({
+                type:'POST',
+                url: "/market/sendEmail",
+                data:JSON.stringify(rows),
+                contentType: "application/json;charset=UTF-8",
+                success: function (text) {
+                    if(text.state==0){
+                        mini.alert("成功发送"+text.data+"封邮件。");
+                    }else{
+                        mini.alert("发送失败，"+text.message);
+                    }
+                },
+                error: function () {
+                }
+            });
+
+        }
+        alert("邮件发送成功！")
     }
 </script>

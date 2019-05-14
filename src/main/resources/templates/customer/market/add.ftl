@@ -13,7 +13,7 @@
             margin:0;
             border:0;
             height:100%;
-            overflow:hidden;
+            overflow:scroll;
         }
         table tr{
             height: 38px;
@@ -50,6 +50,11 @@
                 </td>
             </tr>
             <tr>
+                <td >创建时间：</td>
+                <td>
+                    <input id="createDate" name="createDate" class="mini-datepicker" required="true" emptyText="请选择创建时间"
+                           format="yyyy-MM-dd HH:mm" showTime="true"/>
+                </td>
                 <td >机会描述：</td>
                 <td colspan="3">
                     <input id="description" name="description" class="mini-textarea" width="300px" emptyText="请输入机会描述"/>
@@ -100,7 +105,9 @@
                 url: "/market/findById?id=" + data.id,
                 cache: false,
                 success: function (text) {
-                    var o = mini.decode(text.data);
+                    let d=text.data;
+                    d.createDate=new Date(d.createDate);
+                    var o = mini.decode(text.data,true);
                     form.setData(o);
                     form.setChanged(false);
                 }

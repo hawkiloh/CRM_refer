@@ -11,4 +11,6 @@ public interface CustomerMapper extends MyMapper<Customer> {
     List<Customer> findAll(Customer customer);
 
     List<Customer> findAllByBirthday(Customer customer);
+
+    Customer findByName(Customer customer);
 }

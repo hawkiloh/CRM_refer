@@ -45,7 +45,8 @@
             <tr>
                 <td >最后订单时间：</td>
                 <td >
-                    <input id="lastOrderDate" name="lastOrderDate" class="mini-datepicker" required="true" />
+                    <input id="lastOrderDate" name="lastOrderDate" class="mini-datepicker" required="true"
+                           format="yyyy-MM-dd HH:mm" showTime="true"/>
                 </td>
                 <td >流失状态：</td>
                 <td >
@@ -54,6 +55,11 @@
                 </td>
             </tr>
             <tr>
+                <td >流失时间：</td>
+                <td>
+                    <input id="drainDate" name="drainDate" class="mini-datepicker" required="true"
+                           format="yyyy-MM-dd HH:mm" showTime="true"/>
+                </td>
                 <td >流失原因：</td>
                 <td colspan="3" >
                     <input name="reason" class="mini-textarea" required="true" width="200px" emptyText="请输入流失原因"/>
@@ -114,7 +120,7 @@
                     var drains=text.data;
                     drains.drainDate=new Date(drains.drainDate);
                     drains.lastOrderDate=new Date(drains.lastOrderDate);
-                    var o = mini.decode(drains);
+                    var o = mini.decode(drains,true);
                     form.setData(o);
                     form.setChanged(false);
                 }

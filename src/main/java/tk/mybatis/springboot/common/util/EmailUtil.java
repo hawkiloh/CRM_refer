@@ -18,8 +18,17 @@ public class EmailUtil {
     private JavaMailSender sender;
 
 
-    String subject1 = "主题：生日回访邮件";
-    String content1 = "祝您生日快乐！！";
+    String subjectForBirthday = "主题：生日回访邮件";
+    String contentForBirthday = "祝您生日快乐！！";
+
+
+    String subjectForDrain = "主题：客户回访邮件";
+    String contentForDrain = "请问您对我们的服务有何建议？";
+
+
+    String subjectForOrder = "主题：订单回访邮件";
+    String contentForOrder = "请问您对我们的产品有何建议？";
+
 
     String fromUser = "15626154123@163.com";
     String fromPersonal = "CRM公司";
@@ -41,11 +50,27 @@ public class EmailUtil {
         return true;
     }
 
-    public String getSubject1() {
-        return subject1;
+    public String getSubjectForBirthday() {
+        return subjectForBirthday;
     }
 
-    public String getContent1() {
-        return content1;
+    public String getContentForBirthday() {
+        return contentForBirthday;
+    }
+
+    public String getSubjectForDrain() {
+        return subjectForDrain;
+    }
+
+    public String getContentForDrain() {
+        return contentForDrain;
+    }
+
+    public String getSubjectForOrder() {
+        return subjectForOrder;
+    }
+
+    public String getContentForOrder() {
+        return contentForOrder;
     }
 }

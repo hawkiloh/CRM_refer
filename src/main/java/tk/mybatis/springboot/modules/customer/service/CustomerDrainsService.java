@@ -71,4 +71,12 @@ public class CustomerDrainsService {
         customerDrains.setCustomerName(null);    //防止更改用户名称
         return customerDrainsMapper.updateByPrimaryKeySelective(customerDrains);
     }
+
+    public PageInfo<CustomerDrains> findAllByReview(CustomerDrains customerDrains) {
+
+        PageHelper.startPage(customerDrains.getPage(), customerDrains.getRows());
+        List<CustomerDrains> list = customerDrainsMapper.findAllByReview(customerDrains);
+
+        return new PageInfo<CustomerDrains>(list);
+    }
 }

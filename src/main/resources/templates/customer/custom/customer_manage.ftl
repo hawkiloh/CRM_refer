@@ -164,7 +164,8 @@
         if(row){
             mini.open({
                 url: "/customer/addUI",
-                title: "编辑客户信息", width:600, height: 360,
+                title: "编辑客户信息", width:600, height: 500,
+                showMaxButton:true,
                 onload: function () {
                     var iframe = this.getIFrameEl();
                     var data = { action: "edit", id: row };

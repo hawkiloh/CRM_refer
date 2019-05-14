@@ -30,6 +30,36 @@
 
     </select>
 
+    <!--回访上个月这一天的流失客户-->
+    <select id="findAllByReview" parameterType="customerDrains" resultType="customerDrains">
+        SELECT d.*,c.name as customerName
+        from customer_drains d JOIN customer c on d.customer_id=c.id
+        where 1=1
+        <if test="id!='' and id!=null">
+            and d.id=#{id}
+        </if>
+        <if test="status!='' and status!=null">
+            and c.status=#{status}
+        </if>
+        <if test="delay!='' and delay!=null">
+            and d.delay=#{delay}
+        </if>
+        <if test="reason!='' and reason!=null">
+            and c.reason=#{reason}
+        </if>
+   <!--     <if test="drainDate!='' and drainDate!=null">
+            and d.drain_date=#{drainDate}
+        </if>-->
+        <![CDATA[   and date_format(drain_date,'%Y-%m-%d')=date_format(date_add(now(),INTERVAL -1 month ),'%Y-%m-%d')   ]]>
+        <if test="customerId!='' and customerId!=null">
+            and d.customer_id=#{customerId}
+        </if>
+        <if test="lastOrderDate!='' and lastOrderDate!=null">
+            and d.last_order_date=#{lastOrderDate}
+        </if>
+
+    </select>
+
     <select id="findById" parameterType="string" resultType="CustomerDrains">
         SELECT d.*, c.name as customerName
         from customer_drains d

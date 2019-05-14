@@ -139,7 +139,9 @@
                 url: "/customer/findById?id=" + data.id,
                 cache: false,
                 success: function (text) {
-                    var o = mini.decode(text.data);
+                    let d=text.data;
+                    d.birthday=new Date(d.birthday);
+                    var o = mini.decode(text.data,true);
                     form.setData(o);
                     form.setChanged(false);
                 }

@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.modules.customer.mapper;
 
 
+import tk.mybatis.springboot.modules.customer.model.Customer;
 import tk.mybatis.springboot.modules.customer.model.CustomerDrains;
 import tk.mybatis.springboot.common.util.MyMapper;
 
@@ -10,4 +11,6 @@ public interface CustomerDrainsMapper extends MyMapper<CustomerDrains> {
     List<CustomerDrains> findAll(CustomerDrains customerDrains);
 
     CustomerDrains findById(String id);
+
+    List<CustomerDrains> findAllByReview(CustomerDrains customerDrains);
 }

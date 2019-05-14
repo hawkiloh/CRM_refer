@@ -3,7 +3,6 @@ package tk.mybatis.springboot.modules.customer.controller;
 
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.springboot.common.util.EmailUtil;
@@ -70,7 +69,7 @@ public class CustomerController {
         //构建目标用户的列表
         ArrayList<String> userList = new ArrayList<>();
         System.out.println("size: " + customerList.size());
-        System.out.println(customerList.toString());
+//        System.out.println(customerList.toString());
         for (Customer customer : customerList) {
 
             String email = customer.getEmail();
@@ -81,7 +80,7 @@ public class CustomerController {
         }
         String[] toUsers = userList.toArray(new String[userList.size()]);
         try {
-            emailUtil.sendEmail(toUsers, emailUtil.getSubject1(), emailUtil.getContent1());
+            emailUtil.sendEmail(toUsers, emailUtil.getSubjectForBirthday(), emailUtil.getContentForBirthday());
         } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
             return new JsonResult<>(e);

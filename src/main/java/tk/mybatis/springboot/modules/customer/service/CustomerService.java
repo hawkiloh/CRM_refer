@@ -63,4 +63,8 @@ public class CustomerService {
 
         return new PageInfo<Customer>(list);
     }
+
+    public Customer findByName(Customer customer) {
+        return customerMapper.findByName(customer);
+    }
 }

@@ -5,7 +5,7 @@
         SELECT c.id as chanceId,c.cust_name as custName,c.title,c.contact,c.contact_tel as contactTel,c.create_by as
         createBy,c.create_date as createDate,c.description,c.designee,c.status,c.designee_date as designeeDate,p.*
         from sales_chance c JOIN sales_plan p
-        on c.id=p.sale_chance_id
+        on c.id=p.chance_id
         WHERE 1=1
         <if test="custName!=null and custName!=''">
             AND cust_name LIKE '%${custName}%'
@@ -20,5 +20,50 @@
             AND designee = #{designee}
         </if>
     </select>
+
+
+    <select id="findById" resultType="Plan" parameterType="Plan">
+        SELECT *
+        from sales_plan
+        WHERE 1 = 1
+          AND id = #{id}
+    </select>
+
+
+    <insert id="insertPlan" parameterType="Plan">
+        insert into sales_plan (id, date, to_do, result, chance_id) VALUE
+        (
+        <if test="id!=null and id!=''">
+            #{id},
+        </if>
+
+        <if test="date!=null">
+            #{date},
+        </if>
+        <if test="toDo!=null and toDo!=''">
+            #{toDo},
+        </if>
+        <if test="result!=null and result!=''">
+            #{result},
+        </if>
+        <if test="chanceId!=null and chanceId!=''">
+            #{chanceId}
+        </if>
+        )
+
+    </insert>
+
+
+    <update id="updatePlan" parameterType="Plan">
+        update sales_plan
+        <set>
+            <if test="date != null">date = #{date},</if>
+            <if test="toDo != null and toDo != ''">to_do = #{toDo},</if>
+            <if test="result != null and result != ''">result = #{result},</if>
+            <if test="chanceId != null and chanceId != ''">chance_id = #{chanceId}</if>
+        </set>
+        where id = #{id}
+    </update>
+
 
 </mapper>

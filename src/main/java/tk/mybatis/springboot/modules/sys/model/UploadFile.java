@@ -5,9 +5,7 @@ import tk.mybatis.springboot.common.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by 秦建平 on 2018/3/5.
- */
+
 public class UploadFile extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     private String fileName;

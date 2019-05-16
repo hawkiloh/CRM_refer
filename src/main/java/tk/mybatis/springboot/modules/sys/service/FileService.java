@@ -78,6 +78,7 @@ public class FileService {
         file.transferTo(new File(fileSavePath + name));
 
         UserVo sysUser = (UserVo) request.getSession().getAttribute("user");
+        System.out.println("-----userVO : "+sysUser.toString());
         fileService.save(file, sysUser, "发送成功");
 
     }

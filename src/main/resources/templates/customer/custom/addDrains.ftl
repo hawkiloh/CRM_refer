@@ -31,7 +31,7 @@
     <div style="padding-left:11px;padding-bottom:5px;">
         <table style="table-layout:fixed;">
             <tr>
-                <td style="width:70px;">客户编号：</td>
+                <td style="width:70px;">客户id：</td>
                 <td style="width:150px;">
                     <input name="customerId" class="mini-textbox" required="true"/>
                 </td>
@@ -50,7 +50,7 @@
                 </td>
                 <td >流失状态：</td>
                 <td >
-                    <input id="status" name="status" class="mini-combobox" value="2018-01-01" required="true" emptyText="请选择客户流失状态"
+                    <input id="status" name="status" class="mini-combobox"  required="true" emptyText="请选择客户流失状态"
                            valueField="id" textField="name" data="statu"/>
                 </td>
             </tr>
@@ -96,6 +96,7 @@
             cache: false,
             success: function (text) {
                 if(text.state==0){
+                    mini.alert("添加成功");
                     CloseWindow("save");
                 }else{
                     mini.alert("确认流失失败",text.message);

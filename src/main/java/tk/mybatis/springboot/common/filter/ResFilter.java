@@ -5,9 +5,7 @@ import org.apache.log4j.Logger;
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * Created by 秦建平 on 2018/2/27.
- */
+
 public class ResFilter implements Filter {
     private final static double DEFAULT_USERID = Math.random() * 1000000.0;
     private Logger logger = Logger.getLogger(ResFilter.class);

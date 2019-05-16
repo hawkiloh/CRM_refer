@@ -21,6 +21,11 @@ public class DevelopForward {
         return "/customer/market/add";
     }
 
+    @RequestMapping(value = "/market/addPlanUI")
+    public String market_addPlanUI() {
+        return "/customer/market/addPlan";
+    }
+
     @RequestMapping(value = "/market/giveUI")
     public String market_giveUI() {
         return "/customer/market/designee";

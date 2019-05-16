@@ -50,7 +50,8 @@
 >
     <div property="columns">
         <div type="checkcolumn"></div>
-        <div type="indexcolumn" field="id" align="center" headerAlign="center" width="50">编号</div>
+        <div type="indexcolumn"  align="center" headerAlign="center" width="50">编号</div>
+        <div field="id" align="center" headerAlign="center" width="300">客户id</div>
         <div name="name" field="name" width="100" align="center"  headerAlign="center">客户名称</div>
         <div name="region" field="region" width="120" align="center" headerAlign="center">地区</div>
         <div field="tel" width="80" align="center" headerAlign="center">联系电话</div>
@@ -300,6 +301,6 @@
             });
 
         }
-        alert("邮件发送成功！")
+        alert("已提交系统处理！")
     }
 </script>

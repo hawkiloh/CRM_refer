@@ -30,7 +30,7 @@
                 <td style="width:100%;">
                     <a class="mini-button" iconCls="icon-add" onclick="newRow()" plain="true" tooltip="增加">增加</a>
                     <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-filter" plain="true" onclick="showReview()">今天流失客户回访</a>
+                    <a class="mini-button" iconCls="icon-filter" plain="true" onclick="showReview()">上个月流失客户回访</a>
                     <a class="mini-button" iconCls="icon-filter" plain="true" onclick="clearFilter()">清除过滤</a>
 
                     <span class="separator"></span>
@@ -223,6 +223,6 @@
             });
 
         }
-        alert("邮件发送成功！")
+        alert("已提交系统处理！")
     }
 </script>

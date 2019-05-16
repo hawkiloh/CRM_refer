@@ -3,6 +3,7 @@ package tk.mybatis.springboot.modules.customer.model;
 import tk.mybatis.springboot.common.BaseEntity;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,10 +15,18 @@ public class Plan extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String chanceId;
+
+
     private String custName;
+
+
     private String title;
+
+
     private String contact;
+
     private String contactTel;
+
     private String createBy;
     private Date createDate;
     private String designee;
@@ -148,4 +157,6 @@ public class Plan extends BaseEntity implements Serializable {
     public void setSaleChanceId(String saleChanceId) {
         this.saleChanceId = saleChanceId;
     }
+
+
 }

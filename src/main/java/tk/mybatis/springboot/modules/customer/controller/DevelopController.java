@@ -95,12 +95,22 @@ public class DevelopController {
         return new JsonResult<Develop>(develop);
     }
 
+
     @RequestMapping(value = "/save")
     @ResponseBody
     public JsonResult<Integer> savedevelop(Develop develop, HttpServletRequest request) {
         int i = 0;
         try {
             UserVo user = (UserVo) request.getSession().getAttribute("user");
+            String custName = develop.getCustName();
+            //若要保存订单中的客户名，要经过检查
+            if (!StringUtil.isNullOrEmpty(custName)) {
+
+                Customer byName = customerService.findByName(new Customer(custName));
+                if (byName == null) {
+                    throw new Exception("不存在名称为 " + custName + " 的客户");
+                }
+            }
             i = developService.savedevelop(develop, user);
         } catch (Exception e) {
             return new JsonResult<Integer>(e);
@@ -132,7 +142,7 @@ public class DevelopController {
         return new JsonResult<Integer>(i);
     }
 
-    @RequestMapping(value = "/ findPlanById")
+    @RequestMapping(value = "/findPlanById")
     @ResponseBody
     public JsonResult<Plan> findPlanById(String id) {
         Plan plan = new Plan();

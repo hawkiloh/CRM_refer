@@ -55,7 +55,7 @@ public class FileController {
         }*/
         fileService.uploadFile(file, request);
 
-        return "/file/manager";
+        return "/sys/file/manager";
     }
 
 

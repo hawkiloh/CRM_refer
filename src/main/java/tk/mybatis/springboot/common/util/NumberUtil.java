@@ -8,9 +8,7 @@ import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by 秦建平 on 2017/11/8.
- */
+
 public class NumberUtil {
     private static Logger logger = Logger.getLogger(NumberUtil.class);
 

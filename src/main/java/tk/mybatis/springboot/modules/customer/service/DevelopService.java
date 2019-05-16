@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.springboot.common.util.StringUtil;
 import tk.mybatis.springboot.modules.customer.mapper.DevelopMapper;
 import tk.mybatis.springboot.modules.customer.mapper.PlanMapper;
 import tk.mybatis.springboot.modules.sys.mapper.UserMapper;
@@ -46,12 +47,23 @@ public class DevelopService {
     }
 
     public Plan findPlanById(String id) {
-        return planMapper.selectByPrimaryKey(id);
+        Plan plan = new Plan();
+        plan.setId(id);
+        return planMapper.findById(plan);
     }
 
     public int savePlan(Plan plan) {
-        plan.setResult("开发中");
-        int i = planMapper.updateByPrimaryKeySelective(plan);
+        plan.setResult("执行中");
+        int i;
+        if (StringUtil.isNullOrEmpty(plan.getId())) {
+            //新增plan
+            plan.setId(UUIDGenerator.getUUID());
+            i=planMapper.insertPlan(plan);
+        } else {
+            //更新plan
+            i= planMapper.updatePlan(plan);
+        }
+        System.out.println("---save plan return :"+i);
         return i;
     }
 
@@ -75,9 +87,10 @@ public class DevelopService {
                 if (i > 0) {
                     Plan plan = new Plan();
                     plan.setId(UUIDGenerator.getUUID());
-                    plan.setResult("未开发");
-                    plan.setSaleChanceId(develop.getId());
-                    planMapper.insert(plan);
+                    plan.setResult("未执行");
+                    plan.setChanceId(develop.getId());
+//                    plan.setSaleChanceId(develop.getId());
+                    planMapper.insertPlan(plan);
                 }
             } else {
                 i = developMapper.updateByPrimaryKeySelective(develop);
@@ -108,9 +121,9 @@ public class DevelopService {
     }
 
     public int verRow(String id, String op) {
-        String status = "开发失败";
-        if ("开发成功".equalsIgnoreCase(op)) {
-            status = "开发成功";
+        String status = "执行失败";
+        if ("订单成功".equalsIgnoreCase(op)) {
+            status = "订单成功";
         }
         Plan plan = new Plan();
         plan.setId(id);
@@ -121,6 +134,7 @@ public class DevelopService {
 
     /**
      * 根据创建日期查找订单
+     *
      * @param develop
      * @return
      */

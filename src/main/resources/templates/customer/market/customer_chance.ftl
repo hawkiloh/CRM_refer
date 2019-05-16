@@ -29,7 +29,7 @@
                 <td style="width:100%;">
                     <a class="mini-button" iconCls="icon-add" onclick="newRow()" plain="true" tooltip="增加">增加</a>
                     <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-filter" plain="true" onclick="showReview()">今天订单回访</a>
+                    <a class="mini-button" iconCls="icon-filter" plain="true" onclick="showReview()">订单回访</a>
                     <a class="mini-button" iconCls="icon-filter" plain="true" onclick="clearFilter()">清除过滤</a>
                     <span class="separator"></span>
                     <a class="mini-button" iconCls="icon-upgrade" plain="true" onclick="sendEmail()">发送订单回访邮件</a>
@@ -44,16 +44,17 @@
 </div>
 <div id="datagrid1" class="mini-datagrid" style="width:100%;height:460px;"  allowResize="true" url="/market/findAll"
      idField="id" emptyText="当前数据为空，<a class='op-a' href='javascript:newRow()'>增加一条</a>" showEmptyText="true"
-     allowRowSelect="true" multiSelect="true" allowUnselect="true"
+     allowRowSelect="true" multiSelect="true" allowUnselect="true" virtualColumns="true"
 >
     <div property="columns">
         <div type="checkcolumn"></div>
-        <div type="indexcolumn" field="id" align="center" headerAlign="center">编号</div>
+        <div type="indexcolumn"  align="center" headerAlign="center">编号</div>
+        <div field="id" align="center" headerAlign="center" width="300">订单id</div>
         <div name="custName" field="custName" width="100" align="center"  headerAlign="center">客户名称</div>
         <div field="title" width="160" align="center" headerAlign="center">概要</div>
         <div name="contact" field="contact" width="100" align="center" headerAlign="center">联系人</div>
         <div field="contactTel" width="100" align="center" headerAlign="center">联系人电话</div>
-        <div field="createDate" width="120" align="center" headerAlign="center" dateFormat="yyyy-MM-dd" renderer="parseDate">创建时间</div>
+        <div field="createDate" width="180" align="center" headerAlign="center" dateFormat="yyyy-MM-dd" renderer="parseDate">创建时间</div>
         <div name="status" field="status" width="100" align="center" headerAlign="center" renderer="parseStatus">状态</div>
         <div name="action" width="180" headerAlign="center" align="center" renderer="onActionRenderer" cellStyle="padding:0;">操作</div>
     </div>
@@ -113,7 +114,7 @@
             url: "/market/addUI",
             title: "新增订单",
             async: true,
-            width: 600,
+            width: 750,
             height: 400,
             onload: function () {
                 var iframe = this.getIFrameEl();
@@ -249,6 +250,6 @@
             });
 
         }
-        alert("邮件发送成功！")
+        alert("已提交系统处理！")
     }
 </script>

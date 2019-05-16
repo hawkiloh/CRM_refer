@@ -1,8 +1,7 @@
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>执行开发</title>
+    <title>新增或编辑开发计划</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
     <script src="${request.contextPath}/static/scripts/boot.js" type="text/javascript"></script>
@@ -27,19 +26,45 @@
 <body>
 
 <form id="form1" method="post">
-    <input name="id" class="mini-textbox" style="display: none" />
+    <input name="id" class="mini-hidden" />
     <div style="padding-left:11px;padding-bottom:5px;">
         <table style="table-layout:fixed;">
             <tr>
-                <td >计划实施时间：</td>
-                <td >
-                    <input name="date" class="mini-datepicker" required="true" emptyText="请选择计划实施时间" />
+                <#--<td style="width:70px;">客户名称：</td>
+                <td style="width:150px;">
+                    <input name="custName" class="mini-textbox" required="true"  emptyText="请输入客户名称"/>
+                </td>-->
+                <td style="width:70px;">订单id：</td>
+                <td style="width:150px;">
+                    <input name="chanceId" class="mini-textbox" required="true" width="300px" emptyText="请输入客户订单id"/>
                 </td>
             </tr>
+            <#--<tr>
+                <td >联系人：</td>
+                <td >
+                    <input name="contact" class="mini-textbox" required="true" emptyText="请输入联系人" />
+                </td>
+                <td >联系人电话：</td>
+                <td >
+                    <input name="contactTel" class="mini-textbox"  required="true" emptyText="请输入联系人电话"/>
+                </td>
+            </tr>-->
             <tr>
                 <td >计划内容：</td>
+                <td colspan="3">
+                    <input id="toDo" name="toDo" class="mini-textarea" width="300px" emptyText="请输入计划内容"/>
+                </td>
+
+            </tr>
+            <tr>
+                <td >计划实施时间：</td>
                 <td>
-                    <input id="toDo" name="toDo" class="mini-textarea" width="300px" height="200px" required="true"  emptyText="请输入计划内容"/>
+                    <input id="date" name="date" class="mini-datepicker" required="true" emptyText="请选择计划实施时间"
+                           format="yyyy-MM-dd HH:mm" showTime="true"/>
+                </td>
+                <td >结果：</td>
+                <td >
+                    <input id="result" name="result" class="mini-textbox" value="开发中" required="true" emptyText="请选择结果状态" readonly />
                 </td>
             </tr>
         </table>
@@ -80,16 +105,16 @@
 
     //标准方法接口定义
     function SetData(data) {
-        if (data.action == "edit") {
+        if (data.action === "new") {
             //跨页面传递的数据对象，克隆后才可以安全使用
             data = mini.clone(data);
             $.ajax({
                 url: "/market/findPlanById?id=" + data.id,
                 cache: false,
                 success: function (text) {
-                    var plan=text.data;
-                    plan.date=new Date(plan.date);
-                    var o = mini.decode(plan);
+                    let d=text.data;
+                    d.createDate=new Date(d.createDate);
+                    var o = mini.decode(text.data,true);
                     form.setData(o);
                     form.setChanged(false);
                 }
@@ -123,42 +148,6 @@
     function isClear() {
         var pid = mini.getbyName("pid");
         pid.setValue("");
-    }
-
-    function parseDateToStr(data)
-    {
-        var now = new Date(data);
-
-        var year = now.getFullYear();       //年
-        var month = now.getMonth() + 1;     //月
-        var day = now.getDate();            //日
-
-        var hh = now.getHours();            //时
-        var mm = now.getMinutes();          //分
-        var ss = now.getSeconds();           //秒
-
-        var clock = year + "-";
-
-        if(month < 10)
-            clock += "0";
-
-        clock += month + "-";
-
-        if(day < 10)
-            clock += "0";
-
-        clock += day + " ";
-
-        if(hh < 10)
-            clock += "0";
-
-        clock += hh + ":";
-        if (mm < 10) clock += '0';
-        clock += mm + ":";
-
-        if (ss < 10) clock += '0';
-        clock += ss;
-        return(clock);
     }
 </script>
 </body>

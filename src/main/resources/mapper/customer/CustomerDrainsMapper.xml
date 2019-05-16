@@ -10,13 +10,13 @@
             and d.id=#{id}
         </if>
         <if test="status!='' and status!=null">
-            and c.status=#{status}
+            and d.status=#{status}
         </if>
         <if test="delay!='' and delay!=null">
             and d.delay=#{delay}
         </if>
         <if test="reason!='' and reason!=null">
-            and c.reason=#{reason}
+            and d.reason=#{reason}
         </if>
         <if test="drainDate!='' and drainDate!=null">
             and d.drain_date=#{drainDate}
@@ -50,7 +50,7 @@
    <!--     <if test="drainDate!='' and drainDate!=null">
             and d.drain_date=#{drainDate}
         </if>-->
-        <![CDATA[   and date_format(drain_date,'%Y-%m-%d')=date_format(date_add(now(),INTERVAL -1 month ),'%Y-%m-%d')   ]]>
+        <![CDATA[   and date_format(drain_date,'%Y-%m')=date_format(date_add(now(),INTERVAL -1 month ),'%Y-%m')   ]]>
         <if test="customerId!='' and customerId!=null">
             and d.customer_id=#{customerId}
         </if>

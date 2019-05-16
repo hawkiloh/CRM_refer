@@ -30,6 +30,10 @@ public class Customer extends BaseEntity implements Serializable {
     public Customer() {
     }
 
+    public Customer(String name) {
+        this.name = name;
+    }
+
     public Customer(String name, String region, String managerId, String level, String satify, String credit, String state, String tel, String fax, Date birthday, String email) {
         this.name = name;
         this.region = region;

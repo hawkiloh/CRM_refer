@@ -11,9 +11,7 @@ import java.util.StringTokenizer;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
-/**
- * Created by 秦建平 on 2017/11/8.
- */
+
 public class StringUtil {
 
     private static byte[] allBytes = new byte[256];

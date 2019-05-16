@@ -9,4 +9,11 @@ import java.util.List;
 public interface PlanMapper extends MyMapper<Plan> {
     List<Plan> findAllPlan(Plan plan);
 
+    Plan findById(Plan id);
+
+
+
+    int insertPlan(Plan plan);
+
+    int updatePlan(Plan plan);
 }

@@ -25,7 +25,7 @@
 <script type="text/javascript">
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    var point = new BMap.Point(113.371398,23.137445);
+    var point = new BMap.Point(113.3947,23.0499);
     map.centerAndZoom(point,14);
     var mapType1 = new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP]});
     var overView = new BMap.OverviewMapControl();
@@ -46,9 +46,9 @@
     map.enableContinuousZoom();
     var pointArray={
         id:'1',
-        longitude:113.371398,
-        latitude:23.137445,
-        country:'天河区'
+        longitude:113.3947,
+        latitude:23.0499,
+        country:'广东工业大学西区'
     };
     drawPoint(pointArray, "公司地址");
 
@@ -70,7 +70,7 @@
         var opts = {
             width: 190,     // 信息窗口宽度
             height: 100,     // 信息窗口高度
-            title: "<span style='font-size: 16px;font-weight: 600;'>某某科技股份公司</span>"  // 信息窗口标题
+            title: "<span style='font-size: 16px;font-weight: 600;'>xx公司</span>"  // 信息窗口标题
         };
         var originPoint=GPS.bd_wgs(parseFloat(pointArray.latitude), parseFloat(pointArray.longitude));
 

@@ -88,7 +88,7 @@
     function SaveData() {
         var o = form.getData();
         form.validate();
-        if (form.isValid() == false) return;
+        if (form.isValid() === false) return;
         $.ajax({
             url: "/customerDrains/saveDrains",
             type: 'post',

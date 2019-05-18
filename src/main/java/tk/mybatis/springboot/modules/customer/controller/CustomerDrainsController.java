@@ -96,6 +96,7 @@ public class CustomerDrainsController {
     @RequestMapping(value = "/saveDrains")
     @ResponseBody
     public JsonResult<Integer> saveDrains(CustomerDrains customerDrains) {
+        customerDrains.setCustomerName(null);
 
         int i = 0;
         try {

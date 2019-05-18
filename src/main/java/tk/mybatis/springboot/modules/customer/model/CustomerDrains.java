@@ -2,6 +2,7 @@ package tk.mybatis.springboot.modules.customer.model;
 
 import tk.mybatis.springboot.common.BaseEntity;
 
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +17,8 @@ public class CustomerDrains extends BaseEntity implements Serializable {
     private String delay;
     private String reason;
     private Date drainDate;
+
+    @Transient
     private String customerName;
     private String customerId;
     private Date lastOrderDate;
